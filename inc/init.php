@@ -74,7 +74,9 @@ $swarmAutoLoadClasses = array(
 	'WebRequest' => 'inc/WebRequest.php',
 	# Actions
 	'AddjobAction' => 'inc/actions/AddjobAction.php',
-	'CleanupAction' => 'inc/actions/CleanupAction.php',
+  'StarttestAction' => 'inc/actions/StarttestAction.php',
+  'FinishtestAction' => 'inc/actions/FinishtestAction.php',
+  'CleanupAction' => 'inc/actions/CleanupAction.php',
 	'ClientAction' => 'inc/actions/ClientAction.php',
 	'ClientsAction' => 'inc/actions/ClientsAction.php',
 	'GetrunAction' => 'inc/actions/GetrunAction.php',
