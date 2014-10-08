@@ -110,8 +110,7 @@ class JobPage extends Page {
 		$html = '';
 
 		foreach ( $runs as $run ) {
-			$html .= '<tr><th><a href="' . htmlspecialchars( $run['info']['url'] ) . '">'
-				. $run['info']['name'] . '</a></th>';
+			$html .= '<tr><th>' . $run['info']['name'] . '</th>';
 
 			// Looping over $userAgents instead of $run["uaRuns"],
 			// to avoid shifts in the table (github.com/jquery/testswarm/issues/13)
@@ -136,16 +135,8 @@ class JobPage extends Page {
 						) );
 						$html .=
 							$runResultsTagOpen
-							. ( $uaRun['runResultsLabel']
-								? $uaRun['runResultsLabel']
-								: self::getStatusIconHtml( $uaRun['runStatus'] )
+							. self::getStatusIconHtml( $uaRun['runStatus']
 							). '</a>'
-							. $runResultsTagOpen
-							. html_tag( 'i', array(
-								'class' => 'swarm-show-results icon-list-alt pull-right',
-								'title' => $runResultsTooltip,
-							) )
-							. '</a>'
 							. ( $showResetRun ?
 								html_tag( 'i', array(
 									'class' => 'swarm-reset-run-single icon-remove-circle pull-right',
@@ -199,11 +190,11 @@ class JobPage extends Page {
 				. '</td><td>In progress..</td>'
 			. '</tr>'
 			. '<tr><td class="swarm-status swarm-status-passed">'
-				. self::getStatusIconHtml( "passed" )
+				. '<i class="icon-ok" title="Passed!"></i>'
 				. '</td><td>Passed!</td>'
 			. '</tr>'
 			. '<tr><td class="swarm-status swarm-status-failed">'
-				. self::getStatusIconHtml( "failed" )
+				. '<i class="icon-remove" title="Completed with failures"></i>'
 				. '</td><td>Completed with failures</td>'
 			. '</tr>'
 			. '<tr><td class="swarm-status swarm-status-timedout">'

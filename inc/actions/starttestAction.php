@@ -29,8 +29,55 @@ class StarttestAction extends Action {
 			return;
 		}
 
-		$runId = $request->getInt( "run_id" );
+		$jobId = $request->getInt( "job_id" );
+    $testName = $request->getVal( "test_name" );
+
     $uaId = $request->getVal( "ua_id" );
+
+    $db->query(str_queryf(
+      "LOCK TABLES runs WRITE;"
+    ));
+
+    $runId = $db->getOne(str_queryf(
+      'SELECT
+      id
+      FROM
+      runs
+      WHERE job_id = %u
+      AND   name = %s
+      ORDER BY id DESC
+      LIMIT 1;',
+      $jobId,
+      $testName
+    ));
+
+    if (!$runId) {
+        // Create this run
+        $isInserted = $db->query(str_queryf(
+        "INSERT INTO runs (job_id, name, url, created)
+        VALUES(%u, %s, %s, %s);",
+        $jobId,
+        $testName,
+        "http://localhost",
+        swarmdb_dateformat( SWARM_NOW )
+      ));
+
+      $runId = $db->getInsertId();
+    }
+
+    $db->query(str_queryf(
+      "UNLOCK TABLES;"
+    ));
+
+    if ( !$runId ) {
+      $this->setError( "internal-error", "Could not get or create run id" );
+      return;
+    }
+
+
+    $db->query(str_queryf(
+      "LOCK TABLES clients WRITE;"
+    ));
 
     $clientId = $db->getOne(str_queryf(
       'SELECT
@@ -57,6 +104,10 @@ class StarttestAction extends Action {
 
       $clientId = $db->getInsertId();
     }
+
+    $db->query(str_queryf(
+      "UNLOCK TABLES;"
+    ));
 
     $resultInserted = $db->query(str_queryf(
       'INSERT INTO runresults

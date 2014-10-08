@@ -79,6 +79,8 @@ CREATE INDEX idx_clients_name_ua_created ON clients (name, useragent_id, created
 CREATE TABLE `jobs` (
   `id` int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 
+  `build_id` int unsigned NOT NULL default 0,
+
   -- Job name (can contain HTML).
   `name` varchar(255) binary NOT NULL default '',
 
