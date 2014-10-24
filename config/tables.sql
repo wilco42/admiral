@@ -208,6 +208,8 @@ CREATE TABLE `runresults` (
   -- Number of errors.
   `error` int unsigned NOT NULL default 0,
 
+  `result_url` varchar(255) NOT NULL default '',
+
   -- HTML snapshot of the test results page - gzipped.
   `report_html` blob NULL,
 

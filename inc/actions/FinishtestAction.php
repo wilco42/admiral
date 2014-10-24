@@ -32,13 +32,15 @@ class FinishtestAction extends Action {
 		$resultId = $request->getInt( "result_id" );
     $total = $request->getVal( "total" );
     $fail = $request->getInt( "fail" );
+    $resultUrl = $request->getVal( "result_url" );
 
     $ret = $db->query(str_queryf(
       "UPDATE runresults
-      SET status = 2, total = %u, fail = %u
+      SET status = 2, total = %u, fail = %u, result_url=%s
       WHERE id = %u;",
       $total,
       $fail,
+      $resultUrl,
       $resultId,
       $row->id
     ));
