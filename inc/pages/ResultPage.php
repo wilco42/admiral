@@ -77,55 +77,29 @@ class ResultPage extends Page {
 				)
 				. 'Run #' . htmlspecialchars( $data['info']['runID'] )
 			. '</td></tr>'
-			. '<tr><th>Client</th><td>'
-				. html_tag( 'a', array( 'href' => $data['client']['viewUrl'] ), 'Client #' . $data['info']['clientID'] )
-				. ' / ' . htmlspecialchars( $data['client']['name'] )
-			. '</td></tr>'
+  . '<tr><th>Remote URL</th><td>'
+    . ($data['result_url']
+    ? html_tag( 'a', array( 'href' => $data['result_url'] ), $data['result_url'] )
+    : ''
+    )    . '</td></tr>'
 			. '<tr><th>UA ID</th><td>'
 				. '<code>' . htmlspecialchars( $data['client']['uaID'] ) . '</code>'
-			. '<tr><th>User-Agent</th><td>'
-				. '<tt>' . htmlspecialchars( $data['client']['uaRaw'] ) . '</tt>'
-			. '</td></tr>'
-			. '<tr><th>Run time</th><td>'
-			. ( isset( $data['info']['runTime'] )
-				? number_format( intval( $data['info']['runTime'] ) ) . 's'
-				: '?'
-			)
-			. '</td></tr>'
-			. '<tr><th>Status</th><td>'
-				. htmlspecialchars( $data['info']['status'] )
-			. '</td></tr>'
 			. '<tr><th>Started</th><td>'
 				. self::getPrettyDateHtml( $data['info'], 'started' )
 			. '</td></tr>'
-			. ( isset( $data['info']['savedLocalFormatted'] )
-				? ('<tr><th>Saved</th><td>'
-					. self::getPrettyDateHtml( $data['info'], 'saved' )
-					. '</td></tr>'
-				)
-				: ''
-			)
 			. '</tbody></table>';
 
 		$html .= '<h3>Results</h3>'
 			. '<p class="swarm-toollinks">'
 			. html_tag( 'a', array(
-				'href' => swarmpath( 'index.php' ) . '?' . http_build_query(array(
-					'action' => 'result',
-					'item' => $data['info']['id'],
-					'raw' => '',
-				)),
-				'target' => '_blank',
-				'class' => 'swarm-popuplink',
+				'href' => $data['result_url'],
+				'target' => '_blank'
 			), 'Open in new window' )
 			. '</p>'
 			. html_tag( 'iframe', array(
-				'src' => swarmpath( 'index.php' ) . '?' . http_build_query(array(
-					'action' => 'result',
-					'item' => $data['info']['id'],
-					'raw' => '',
-				)),
+				'src' => $data['result_url'],
 				'width' => '100%',
+        'height' => '1200px',
 				'class' => 'swarm-result-frame',
 			));
 

@@ -235,3 +235,6 @@ CREATE INDEX idx_runresults_status_client ON runresults (status, client_id);
 
 -- Usage: ScoresAction.
 CREATE INDEX idx_runresults_client_total ON runresults (client_id, total);
+
+-- Usage: ScoresAction.
+CREATE INDEX idx_runs_name ON runs (name);

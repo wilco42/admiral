@@ -41,7 +41,8 @@ class ResultAction extends Action {
 				client_id,
 				status,
 				updated,
-				created
+				created,
+        result_url
 			FROM runresults
 			WHERE id = %u;',
 			$item
@@ -53,6 +54,8 @@ class ResultAction extends Action {
 		}
 
 		$data = array();
+
+    $data['result_url'] = $row->result_url;
 
 		// A job can be deleted without nuking the runresults,
 		// this is by design so results stay permanently accessible
