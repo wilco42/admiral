@@ -56,8 +56,10 @@ class AddjobAction extends Action {
       FROM
       jobs
       WHERE build_id = %u
+        AND project_id = %s
       LIMIT 1;',
-      $buildId
+      $buildId,
+      $projectID
     ));
 
     $isNew = true;
