@@ -29,10 +29,64 @@ class FinishtestAction extends Action {
 			return;
 		}
 
-		$resultId = $request->getInt( "result_id" );
+
+    $jobId = $request->getInt( "job_id" );
+    $testName = $request->getVal( "test_name" );
+    $uaId = $request->getVal( "ua_id" );
+
     $total = $request->getVal( "total" );
     $fail = $request->getInt( "fail" );
     $resultUrl = $request->getVal( "result_url" );
+
+
+
+
+
+    $runId = $db->getOne(str_queryf(
+      'SELECT
+      id
+      FROM
+      runs
+      WHERE job_id = %u
+      AND   name = %s
+      ORDER BY id DESC
+      LIMIT 1;',
+      $jobId,
+      $testName
+    ));
+
+
+    if ( !$runId ) {
+      $this->setError( "internal-error", "Could not get run id" );
+      return;
+    }
+
+    $clientId = $db->getOne(str_queryf(
+      'SELECT
+      id
+      FROM
+      clients
+      WHERE useragent_id = %s
+      LIMIT 1;',
+      $uaId
+    ));
+
+    if ( !$clientId ) {
+      $this->setError( "internal-error", "Could not get client id" );
+      return;
+    }
+
+    $resultId = $db->getOne(str_queryf(
+      'SELECT
+      id
+      FROM
+      runresults
+      WHERE run_id = %u
+      AND client_id = %u
+      LIMIT 1;',
+      $runId,
+      $clientId
+    ));
 
     $ret = $db->query(str_queryf(
       "UPDATE runresults
