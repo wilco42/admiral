@@ -235,7 +235,10 @@ h2 + .row {
 	color: #508745;
 }
 
-.swarm-status-timedout,
+.swarm-status-timedout {
+    background: #ffffa6;
+}
+
 .swarm-status-error,
 .swarm-status-failed {
 	background: #EFD7D7;

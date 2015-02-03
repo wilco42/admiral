@@ -164,7 +164,7 @@ class JobPage extends Page {
 			"progress" => '<i class="icon-repeat swarm-status-progressicon" title="In progress.."></i>',
 			"passed" => '<i class="icon-ok" title="Passed!"></i>',
 			"failed" => '<i class="icon-remove" title="Completed with failures"></i>',
-			"timedout" => '<i class="icon-flag" title="Maximum execution time exceeded"></i>',
+			"timedout" => '<i class="icon-repeat" title="Failed, waiting to retry"></i>',
 			"error" => '<i class="icon-warning-sign" title="Aborted by an error"></i>',
 			"lost" => '<i class="icon-question-sign" title="Client lost connection with the swarm"></i>',
 		);
@@ -197,9 +197,9 @@ class JobPage extends Page {
 				. '<i class="icon-remove" title="Completed with failures"></i>'
 				. '</td><td>Completed with failures</td>'
 			. '</tr>'
-			. '<tr><td class="swarm-status swarm-status-timedout">'
+			. '<tr><td class="swarm-status swarm-status-progress">'
 				. self::getStatusIconHtml( "timedout" )
-				. '</td><td>Maximum execution time exceeded</td>'
+				. '</td><td>Failed but pending retry</td>'
 			. '</tr>'
 			. '<tr><td class="swarm-status swarm-status-error">'
 				. self::getStatusIconHtml( "error" )
