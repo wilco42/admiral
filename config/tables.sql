@@ -210,6 +210,8 @@ CREATE TABLE `runresults` (
 
   `result_url` varchar(255) NOT NULL default '',
 
+  `build_url` varchar(255) NOT NULL default '',
+
   -- HTML snapshot of the test results page - gzipped.
   `report_html` blob NULL,
 

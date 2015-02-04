@@ -82,6 +82,11 @@ class ResultPage extends Page {
     ? html_tag( 'a', array( 'href' => $data['result_url'] ), $data['result_url'] )
     : ''
     )    . '</td></tr>'
+  . '<tr><th>Build URL</th><td>'
+    . ($data['build_url']
+    ? html_tag( 'a', array( 'href' => $data['build_url'] ), $data['build_url'] )
+    : ''
+    )    . '</td></tr>'
 			. '<tr><th>UA ID</th><td>'
 				. '<code>' . htmlspecialchars( $data['client']['uaID'] ) . '</code>'
 			. '<tr><th>Started</th><td>'
