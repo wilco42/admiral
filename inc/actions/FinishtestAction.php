@@ -36,6 +36,7 @@ class FinishtestAction extends Action {
 
     $total = $request->getVal( "total" );
     $fail = $request->getInt( "fail" );
+    $numRetries = $request->getInt( "num_retries" );
     $resultUrl = $request->getVal( "result_url" );
     $buildUrl = $request->getVal( "build_url" );
 
@@ -90,10 +91,11 @@ class FinishtestAction extends Action {
 
     $ret = $db->query(str_queryf(
       "UPDATE runresults
-      SET status = 2, total = %u, fail = %u, result_url=%s, build_url=%s
+      SET status = 2, total = %u, fail = %u, num_retries=%u, result_url=%s, build_url=%s
       WHERE id = %u;",
       $total,
       $fail,
+      $numRetries,
       $resultUrl,
       $buildUrl,
       $resultId,
