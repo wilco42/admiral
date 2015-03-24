@@ -208,6 +208,8 @@ CREATE TABLE `runresults` (
   -- Number of errors.
   `error` int unsigned NOT NULL default 0,
 
+  `num_retries` int unsigned NOT NULL default 0,
+
   `result_url` varchar(255) NOT NULL default '',
 
   `build_url` varchar(255) NOT NULL default '',
