@@ -90,7 +90,7 @@ class PendingretryAction extends Action {
 
     $ret = $db->query(str_queryf(
       "UPDATE runresults
-      SET status = 3, total = %u, fail = %u, result_url=%s, build_url=%s
+      SET status = 3, total = %u, fail = %u, num_retries = 0, result_url=%s, build_url=%s
       WHERE id = %u;",
       $total,
       $fail,
