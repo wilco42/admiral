@@ -425,6 +425,10 @@ h2 + .row {
 	background-image: url(../img/browser-safari.png);
 }
 
+.swarm-browser-phantomjs {
+	background-image: url(../img/browser-phantomjs.png);
+}
+
 .swarm-browser-webkit_nightly {
 	background-image: url(../img/browser-webkit.png);
 }
