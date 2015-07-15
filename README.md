@@ -5,13 +5,19 @@ Beautiful dashboards for tracking cross-browser end-to-end test results over tim
 
 Based on the fantastic [TestSwarm](https://github.com/jquery/testswarm) project.
 
+## Features
+
 ### High Level View: Results by Commit
+
+Tracks cross-browser test results over time, pinpointing the commit or PR that introduced a failure.
 
 ![commits](https://cloud.githubusercontent.com/assets/1438478/8704138/6ce91d60-2ade-11e5-9225-88074ddbf3c0.gif)
 
 ### Drill-Down View: Individual Test Results
 
-![build](https://cloud.githubusercontent.com/assets/1438478/8704137/6ce89174-2ade-11e5-914d-e4df2c846e89.gif)
+Investigate a specific build, to pinpoint which tests failed on which browsers.
+
+![build2](https://cloud.githubusercontent.com/assets/1438478/8704279/41525594-2adf-11e5-89fd-4679f0e8263b.gif)
 
 Quick start
 ----------
