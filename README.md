@@ -1,38 +1,22 @@
-TestSwarm - Distributed Continuous Integration for JavaScript
+Admiral
 =================
 
-TestSwarm provides distributed continuous integration testing for
-JavaScript.
+Beautiful dashboards for tracking cross-browser end-to-end test results over time.
 
-The main instance monitoring jQuery core and related projects runs at
-[swarm.jquery.org](http://swarm.jquery.org/).
+Based on the fantastic [TestSwarm](https://github.com/jquery/testswarm) project.
 
+### High Level View: Results by Commit
+
+![commits](https://cloud.githubusercontent.com/assets/1438478/8704138/6ce91d60-2ade-11e5-9225-88074ddbf3c0.gif)
+
+### Drill-Down View: Individual Test Results
+
+![build](https://cloud.githubusercontent.com/assets/1438478/8704137/6ce89174-2ade-11e5-914d-e4df2c846e89.gif)
 
 Quick start
 ----------
 
-Clone the repo, `git clone --recursive git://github.com/jquery/testswarm.git`.
-
-
-Versioning
-----------
-
-TestSwarm uses the Semantic Versioning guidelines as much as possible.
-
-Releases will be numbered in the following format:
-
-`<major>.<minor>.<patch>`
-
-The `-alpha` suffix is used to indicate unreleased versions in development.
-
-For more information on SemVer, please visit http://semver.org/.
-
-
-Bug tracker
------------
-
-Found a bug? Please report it using our [issue
-tracker](https://github.com/jquery/testswarm/issues)!
+Clone the repo, `git clone --recursive git://github.com/TestArmada/admiral.git`.
 
 
 Installation
@@ -40,8 +24,8 @@ Installation
 
 ### Environmental compatibility
 
-To run TestSwarm you will need a web server, a database server and PHP.
-At the moment TestSwarm supports the following, but other configurations
+To run Admiral you will need a web server, a database server and PHP.
+At the moment Admiral supports the following, but other configurations
 may work as well.
 
 * Apache 2.0+, NGINX 1.2+
@@ -56,11 +40,11 @@ may work as well.
 1. Copy `config/sample-localSettings.php` to `config/localSettings.php`<br/>
    Copy `config/sample-localSettings.json` to `config/localSettings.json`.<br/>
    Edit `localSettings.json` and replace the sample settings with your own.<br/>
-   Refer to the [Settings page](https://github.com/jquery/testswarm/wiki/Settings) for more information.
+   Refer to the [Settings page](https://github.com/TestArmada/admiral/wiki/Settings) for more information.
 
 1. *For Apache:*<br/>
    Copy `config/sample-.htaccess` to `.htaccess`.<br/>
-   To run TestSwarm from a non-root directory, set `web.contextpath` in `localSettings.json` to the
+   To run Admiral from a non-root directory, set `web.contextpath` in `localSettings.json` to the
    correct path from the web root and update RewriteBase in `.htaccess`.
    Verify that `.htaccess` is working properly by opening a page other than the HomePage (e.g.
    `/testswarm/projects`) in your browser.<br/>Required Apache configuration:<br/>
@@ -102,23 +86,6 @@ may work as well.
    `* * * * * curl -s http://swarm.example.org/api.php?action=cleanup > /dev/null`
 
 1. [Create a project](./scripts/README.md#create-projects) and [submit jobs](./scripts/addjob/README.md).
-
-
-Get involved
----------------------
-
-You're welcome to use the GitHub [issue tracker](https://github.com/jquery/testswarm/issues)
- to start discussions.
-
-Or post to the [QUnit and Testing forum](https://forum.jquery.com/qunit-and-testing).
-
-Most of us are also on IRC in the
-[#jquery-dev](http://webchat.freenode.net/?channels=jquery-dev) channel at
-irc.freenode.net
-
-Planning for TestSwarm and other projects related to testing of javascript
-applications based around jQuery happens on the [jQuery Testing Team
-wiki](http://jquerytesting.pbworks.com)
 
 
 Documentation
